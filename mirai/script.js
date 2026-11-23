@@ -1,3 +1,4 @@
+
 /* =========================================================
    MIRAI — SCRIPT.JS
    ========================================================= */
@@ -15,7 +16,6 @@ const revealElements = document.querySelectorAll(".reveal");
 const cursorGlow = document.querySelector(".cursor-glow");
 const contactForm = document.querySelector("#contactForm");
 const yearElement = document.querySelector("#year");
-
 
 
 /* =========================================================
@@ -188,19 +188,6 @@ window.addEventListener(
    6. SCROLL-REVEAL-ANIMATIONEN
    ========================================================= */
 
-/*
-   Im CSS haben die Elemente zuerst:
-
-   .reveal {
-       opacity: 0;
-       transform: translateY(28px);
-   }
-
-   Sobald sie sichtbar werden,
-   fügt JavaScript die Klasse .visible hinzu.
-*/
-
-
 if ("IntersectionObserver" in window) {
 
     const revealObserver =
@@ -216,12 +203,6 @@ if ("IntersectionObserver" in window) {
                             "visible"
                         );
 
-                        /*
-                           Nach der ersten Animation
-                           muss das Element nicht weiter
-                           beobachtet werden.
-                        */
-
                         observer.unobserve(
                             entry.target
                         );
@@ -234,9 +215,7 @@ if ("IntersectionObserver" in window) {
 
             {
                 threshold: 0.12,
-
-                rootMargin:
-                    "0px 0px -40px 0px"
+                rootMargin: "0px 0px -40px 0px"
             }
 
         );
@@ -249,11 +228,6 @@ if ("IntersectionObserver" in window) {
     });
 
 } else {
-
-    /*
-       Fallback für sehr alte Browser:
-       Alle Elemente direkt sichtbar machen.
-    */
 
     revealElements.forEach((element) => {
 
@@ -279,13 +253,6 @@ if (yearElement) {
 /* =========================================================
    8. CURSOR GLOW EFFEKT
    ========================================================= */
-
-/*
-   Der Effekt wird nur auf Geräten aktiviert,
-   die eine Maus oder einen präzisen Pointer haben.
-
-   Auf Smartphones wird der Effekt nicht benötigt.
-*/
 
 const hasFinePointer =
     window.matchMedia(
@@ -340,11 +307,6 @@ anchorLinks.forEach((link) => {
             const targetId =
                 link.getAttribute("href");
 
-
-            /*
-               Links mit nur "#" ignorieren.
-            */
-
             if (
                 !targetId ||
                 targetId === "#"
@@ -354,30 +316,21 @@ anchorLinks.forEach((link) => {
 
             }
 
-
             const targetElement =
                 document.querySelector(
                     targetId
                 );
 
-
             if (!targetElement) {
                 return;
             }
 
-
             event.preventDefault();
-
-
-            /*
-               Höhe des Headers berücksichtigen.
-            */
 
             const headerHeight =
                 header
                     ? header.offsetHeight
                     : 0;
-
 
             const targetPosition =
                 targetElement
@@ -390,11 +343,9 @@ anchorLinks.forEach((link) => {
                 -
                 15;
 
-
             window.scrollTo({
 
                 top: targetPosition,
-
                 behavior: "smooth"
 
             });
@@ -431,10 +382,8 @@ function updateActiveNavigation() {
         const sectionTop =
             section.offsetTop - 180;
 
-
         const sectionHeight =
             section.offsetHeight;
-
 
         if (
             window.scrollY >= sectionTop &&
@@ -454,10 +403,8 @@ function updateActiveNavigation() {
 
         link.classList.remove("active");
 
-
         const href =
             link.getAttribute("href");
-
 
         if (
             href ===
@@ -487,9 +434,6 @@ window.addEventListener(
 
 
 updateActiveNavigation();
-
-
-
 
 
 /* =========================================================
